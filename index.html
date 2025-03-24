@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Waste Management</title>
+    <style>
+        /* General Styles */
+        body {
+            background-color: #f0f9f0;
+            color: #333;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        /* Header */
+        header {
+            background: #2d6a4f;
+            color: white;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: slideDown 1s ease-in-out;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            padding: 10px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 8px 15px;
+            transition: transform 0.3s, color 0.3s;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            color: #2d6a4f;
+            background: white;
+            transform: scale(1.1);
+        }
+
+        /* Main Content */
+        main {
+            padding: 50px;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        h2 {
+            color: #2d6a4f;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            animation: slideUp 1s ease-in-out;
+        }
+
+        p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #2d6a4f;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background: #40916c;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #2d6a4f;
+            color: white;
+            padding: 10px;
+            margin-top: 30px;
+            font-size: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Smart Waste Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="request.html">Request Pickup</a></li>
+                <li><a href="status.html">Check Status</a></li>
+                <li><a href="admin.php">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h2>Welcome to the Smart Waste Management System</h2>
+        <p>Report waste collection requests easily and track their status.</p>
+        <a href="request.html" class="btn">Request a Pickup</a>
+    </main>
+
+    <footer>
+        &copy; 2025 Smart Waste Management System. All rights reserved.
+    </footer>
+</body>
+</html>

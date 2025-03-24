@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Waste Pickup</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <style>
+        body {
+            background-color: #f0f9f0;
+            color: #333;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #2d6a4f;
+            margin-bottom: 15px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 1.1rem;
+            text-align: left;
+            font-weight: bold;
+            color: #2d6a4f;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #2d6a4f;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #2d6a4f;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #40916c;
+        }
+
+        /* Map Styles */
+        #map {
+            width: 100%;
+            height: 350px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Request Waste Pickup</h2>
+        
+        <form action="process_request.php" method="POST">
+            <label>Name:</label>
+            <input type="text" name="name" required>
+            
+            <label>Address:</label>
+            <input type="text" name="address" required>
+            
+            <label>Waste Type:</label>
+            <select name="waste_type">
+                <option value="Organic">Organic</option>
+                <option value="Plastic">Plastic</option>
+                <option value="Metal">Metal</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <!-- Map for Location Selection -->
+            <label>Select Pickup Location:</label>
+            <div id="map"></div>
+
+            <!-- Hidden Fields to Store Latitude and Longitude -->
+            <input type="hidden" id="latitude" name="latitude">
+            <input type="hidden" id="longitude" name="longitude">
+
+            <button type="submit">Submit Request</button>
+        </form>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map centered at a default location
+        var map = L.map('map').setView([12.9716, 77.5946], 13); // Default: Bangalore, India
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        var marker;
+
+        // Event Listener to capture user location on click
+        map.on('click', function(e) {
+            var lat = e.latlng.lat;
+            var lng = e.latlng.lng;
+
+            // Remove old marker if exists
+            if (marker) {
+                map.removeLayer(marker);
+            }
+
+            // Add new marker
+            marker = L.marker([lat, lng]).addTo(map)
+                .bindPopup("Selected Location").openPopup();
+
+            // Update hidden fields with coordinates
+            document.getElementById("latitude").value = lat;
+            document.getElementById("longitude").value = lng;
+        });
+    </script>
+
+</body>
+</html>
